@@ -29,26 +29,29 @@ $passwordErr = "";
 
 $isEmpty = 0;
 
-function isEmptyF($val ,$err, $isEmpty, $POSTname){
-    if(empty($val)){
-        $err = "Empty field";
-        $isEmpty = 1;
-    }
-    else{
-        $val = trim($_POST["$POSTname"]);
-        $val = htmlspecialchars($val);
-    }
+
+if(empty($persNumber)){
+    $persNumbErr = "Is empty";
+    $isEmpty = 1;
 }
-
-isEmptyF($persNumber,$persNumbErr,$isEmpty,'personalNumber');
-isEmptyF($firstName,$firstNameErr,$isEmpty,'firstname');
-isEmptyF($lastName,$lastNameErr,$isEmpty,'lastname');
-isEmptyF($email,$emailErr,$isEmpty,'email');
-isEmptyF($password,$passwordErr,$isEmpty,'password');
-
-$hashedPassword = password_hash($password,PASSWORD_BCRYPT);
-
-
+if(empty($firstName)){
+    $firstNameErr = "Is empty";
+    $isEmpty = 1;
+}
+if(empty($lastName)){
+    $lastNameErr = "Is empty";
+    $isEmpty = 1;
+}
+if(empty($email)){
+    $emailErr = "Is empty";
+    $isEmpty = 1;
+}
+if(empty($password)){
+    $passwordErr = "Is empty";
+    $isEmpty = 1;
+}else{
+    $hashedPassword = password_hash($password,PASSWORD_BCRYPT);
+}
 
 
 if($isEmpty == 0){
